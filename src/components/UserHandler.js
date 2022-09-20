@@ -5,8 +5,7 @@ export function UserHandler() {
     const [nickname, setNickname] = useState(localStorage.getItem('nickname') ? localStorage.getItem('nickname') : 'User nickname')
     let nicknameRef = useRef()
     let preview
-
-    const userFormToggleVisability = () => {document.querySelector('.user-form')?.classList.toggle('form-non-active')}
+    let userFormToggleVisability
 
     const saveData = (e) => {
         if(e) e.preventDefault()
@@ -60,6 +59,8 @@ export function UserHandler() {
         document.querySelector('.user-form-close-btn').addEventListener('click', userFormToggleVisability)
         document.querySelector('.user-form-open-btn').addEventListener('click', userFormToggleVisability)
         preview = document.querySelector('.user-avatar');
+        userFormToggleVisability = () => {document.querySelector('.user-form')?.classList.toggle('form-non-active')}
+
         return localStorage.getItem('avatar') ? changeAvatar() : undefined
     })
 
