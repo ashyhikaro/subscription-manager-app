@@ -1,0 +1,31 @@
+$main-grey-color: rgb(156, 156, 156);
+
+.header-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.header-title-container {
+    display: flex;
+    align-items:flex-start;
+    justify-content: space-between;
+    height: 80px;
+
+    h1 {
+        font-size: 1.5rem;
+        color: $main-grey-color;
+    }
+}
+
+.add-sub-btn {
+    border-radius: 10px;
+    background-color: transparent;
+    border: 2px solid $main-grey-color;
+    color: $main-grey-color;
+    padding: 5px 10px;
+}
+
+.add-sub-btn:hover {
+    cursor: pointer;
+    color: $main-grey-color;
+}

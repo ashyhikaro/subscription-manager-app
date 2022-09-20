@@ -1,0 +1,198 @@
+$main-grey-color: rgb(156, 156, 156);
+
+.form-container {
+    .form-titles-container {
+        display: flex;
+        justify-content: space-evenly;
+        color: rgb(152, 152, 152);
+        border-bottom: 1px solid rgb(193, 192, 192);
+        padding-bottom: 10px;
+        margin: 20px 0;
+
+        .form-title {
+            font-size: calc(12px + 0.6vw);
+        }
+    }
+
+    .create-form-container {
+        background-color: rgb(229, 229, 229);
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+        display: flex;
+        flex-direction: column;
+
+        .create-form-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+
+            h3 {
+                font-weight: 400;
+                color: $main-grey-color;
+                font-size: 18px;
+            }
+
+            .form-close-btn {
+                font-size: 14px;
+                cursor: pointer;
+                color: $main-grey-color;
+                margin-right: 3px;
+            }
+        }
+
+        .create-sub-form {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            label {
+                width: 25%;
+                display: flex;
+                flex-direction: column;
+
+                span {
+                    color: $main-grey-color;
+                    font-size: 15px;
+                }
+
+                input[type="text"], input[type="number"] {
+                    border-radius: 10px;
+                    border: none;
+                    outline: none;
+                    height: 30px;
+                    padding-left: 10px;
+                    margin-top: 5px;
+                    font-size: 14px;
+                }
+            }
+
+            .service-color-input {
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                width: 35px;
+                height: 35px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+            }
+            .service-color-input::-webkit-color-swatch {
+                border-radius: 5px;
+                border: none;
+            }
+            .service-color-input::-moz-color-swatch {
+                border-radius: 5px;
+                border: none;
+            }
+
+            .service-add-btn {
+                border: none;
+                background-color: transparent;
+                font-size: 20px;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .invisible {
+        display: none;
+    }
+}
+
+.subscribtion-container {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+
+    .sub-text {
+        font-size: calc(10px + 0.5vw);
+    }
+
+    .sub-title-container {
+        display: flex;
+        align-items: center;
+        gap: 27%;
+        width: 37%;
+        
+        .sub-logo  {
+            border-radius: 8px;
+            padding: 5px 10px;
+            font-size: calc(14px + 0.5vw);
+            font-weight: 600;
+        }
+
+        .sub-title {
+            display: block;
+            width: 50%;
+            word-wrap: break-word;
+        }
+    }
+    
+    .sub-price-container {
+        text-align: center;
+        width: 20%;
+        margin-right: 16%;
+
+        .sub-price {
+            font-weight: 600;
+        }
+    }
+    
+
+    .sub-day-container {
+        text-align: center;
+        width: 14%;
+        margin-right: 6%;
+    }
+
+    .sub-btns-container {
+        display: flex;
+
+        .sub-delete-btn {
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .sub-delete-btn:hover {
+            color: rgb(207, 11, 11);
+        }
+    
+        .sub-edit-btn {
+            cursor: pointer;
+        }
+
+        .sub-edit-btn:hover  {
+            color: lightgreen;
+        }
+    }
+}
+
+.chose-sub {
+    background-color: white;
+    border-radius: 10px;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin: 5px 0;
+}
+
+@media (max-width: 1200px) {
+    .subscribtion-container {
+        .sub-title-container  {
+            gap: 15%;
+        }
+    }
+}
+
+@media (max-width: 1000px) {
+    .subscribtion-container {
+        .sub-title-container  {
+            gap: 10%;
+        }
+    }
+}

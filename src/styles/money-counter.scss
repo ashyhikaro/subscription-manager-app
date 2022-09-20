@@ -1,0 +1,77 @@
+$main-grey-color: rgb(156, 156, 156);
+
+.user-money-counter {
+    height: 90%;
+
+    .profit-container {
+        width: 100%;
+        text-align: center;
+        padding-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        .profit-text {
+            color: $main-grey-color;
+        }
+    
+        .profit-title {
+            font-size: calc(16px + 0.65vw);
+        }
+
+        .profit-count-container {
+            display: flex;
+            justify-content: center;
+            position: relative;
+            width: 130px;
+            max-width: 200px;
+            margin: auto;
+
+            .count-form {
+                max-width: 110px;
+            }
+    
+            .profit-count-btn {
+                cursor: pointer;
+                font-size: 12px;
+                color: rgb(179, 177, 177);
+                align-self: flex-start;
+                position: absolute;
+                right: 0;
+            }
+        }
+
+        .profit-count {
+            font-size: calc(20px + 1.3vw);
+            font-weight: 600;
+            word-wrap: break-word;
+        }
+
+        .profit-currency {
+            font-size: calc(14px + 0.2vw);
+        }
+
+        #count {
+            width: 100%;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            height: 30px;
+            padding-left: 10px;
+            margin-top: 5px;
+            font-size: 14px;
+            margin-bottom: 10px;
+            box-shadow: grey 0 0 4px;
+        }
+
+        .count-invisiblle {
+            display: none;
+        }
+    }
+
+    .profit-container:first-of-type {
+        border-bottom: 1px solid rgb(193, 192, 192);
+        margin-bottom: 20px;
+    }
+}
+

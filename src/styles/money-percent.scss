@@ -1,0 +1,47 @@
+$main-grey-color: rgb(156, 156, 156);
+
+.percent-container {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    width: 100%;
+    height: 45%;
+}
+
+.percent-title {
+    font-size: calc(10px + 0.5vw);
+    color: $main-grey-color;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 20px;
+    width: 70%;
+    height: 10%;
+}
+
+.percent-value-container {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+    .progress-ring {
+        position: absolute;
+
+        .progress-ring__circle {
+            transform-origin: center;
+            transform: rotate(-90deg);
+            transition: stroke-dashoffset 0.24s;
+        }
+    }
+
+    .percent-value {
+        text-align: center;
+        font-size: calc(12px + 0.8vw);
+        font-weight: 600;
+        color: $main-grey-color;
+        position: absolute;
+        top: 42%;
+    }
+}
