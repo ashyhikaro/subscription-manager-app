@@ -1,1 +1,0 @@
-export const userFormToggleVisability = () => {document.querySelector('.user-form')?.classList.toggle('form-non-active')}

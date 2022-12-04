@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { userFormToggleVisability } from '../functions/userFormVisabillity'
+// import { userFormToggleVisability } from '../functions/userFormVisabillity'
 import '../styles/user-handler.scss'
 
 export function UserHandler() {
@@ -20,6 +20,8 @@ export function UserHandler() {
         nicknameRef.current.value = ''
 
         localStorage.setItem('avatar',  preview.style.backgroundImage)
+
+        console.log('submit')
     }
 
     const changeAvatar = (e) => {
@@ -56,9 +58,9 @@ export function UserHandler() {
         
     }
 
+    const userFormToggleVisability = () => document.querySelector('.user-form')?.classList.toggle('form-non-active')
+
     useEffect(() => {
-        document.querySelector('.user-form-close-btn').addEventListener('click', userFormToggleVisability)
-        document.querySelector('.user-form-open-btn').addEventListener('click', userFormToggleVisability)
         preview = document.querySelector('.user-avatar');
 
         return localStorage.getItem('avatar') ? changeAvatar() : undefined
@@ -69,13 +71,13 @@ export function UserHandler() {
             <div className='user-container'>
                 <div className='user-avatar'/>    
                 <p className='user-nickname'>{nickname}</p>
-                <button className='user-form-open-btn'>&#9998;</button>
+                <button className='user-form-open-btn' onClick={userFormToggleVisability}>&#9998;</button>
             </div>
             
             <form onSubmit={e => saveData(e)} className='user-form form-non-active'>
                 <div className='setting-header'>
                     <p className='setting-title'>Settings</p>
-                    <button className='user-form-close-btn'>&#10006;</button>
+                    <button className='user-form-close-btn' type="button" onClick={userFormToggleVisability}>&#10006;</button>
                 </div>
 
                 <label htmlFor="nickname" className='setting-prop-title'>Username:</label>
