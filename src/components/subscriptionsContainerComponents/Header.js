@@ -1,6 +1,6 @@
-import { addNewSubContainerToggleVisability } from '../../functions/addContainerVisabillity'
-
 export function Header() {
+    const addNewSubContainerToggleVisability = () => document.querySelector('.create-form-container')?.classList.toggle('invisible')
+
     return (
         <div className='header-container'>
             <div className="header-title-container">
