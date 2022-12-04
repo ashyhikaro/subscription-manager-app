@@ -3,7 +3,7 @@ import { SubscriptionCreateForm } from './forms/SubcriptionCreateForm.js'
 
 let activeSubId = null, subsArr
 
-export function Subscriptions() {
+export function Subscriptions({setSum}) {
     const [subs, setSubs] = useState(() => localStorage.getItem('subs') ? JSON.parse(localStorage.getItem('subs')) : [])
     let subsList
 
@@ -65,6 +65,10 @@ export function Subscriptions() {
     useEffect(() => {
         localStorage.setItem('subs', JSON.stringify(subs))
 
+        let sum = subs.reduce((sum, sub) => sum + sub.price, 0)
+        setSum(sum)
+        localStorage.setItem('sumOfSubs', JSON.stringify(sum))
+
         subsArr = subs
 
         document.querySelectorAll('.subscribtion-container').forEach(item => {
@@ -76,6 +80,8 @@ export function Subscriptions() {
         })
 
         document.addEventListener('click', e => queryAllSubs(e))
+
+        
     }, [subs])
 
     return (

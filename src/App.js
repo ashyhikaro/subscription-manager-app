@@ -4,7 +4,7 @@ import { MainPanel } from './components/subscriptionsContainerComponents/MainPan
 import { SidePanel } from './components/sidepanelComponents/SidePanel';
 
 function App() {
-  const [sum, setSum] = useState(localStorage.getItem('sumOfSubs') ? localStorage.getItem('sumOfSubs') : 0)
+  const [sum, setSum] = useState(localStorage.getItem('sumOfSubs') ? localStorage.getItem('sumOfSubs') : 0.00)
 
   useEffect(() => {
     let pricesArr = document.querySelectorAll('.sub-price')
@@ -19,7 +19,7 @@ function App() {
 
   return (
     <div className='app-window' style={{}}>
-      <MainPanel />
+      <MainPanel setSum={setSum} />
       <SidePanel sum={sum} />
     </div>
   );

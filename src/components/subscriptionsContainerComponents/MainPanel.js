@@ -5,11 +5,11 @@ import '../../styles/media-req.scss'
 import { Header } from "./Header";
 import { Subscriptions } from "./Subsciptions";
 
-export function MainPanel()  {
+export function MainPanel({setSum})  {
     return (
         <div className="main-panel-container">
             <Header />
-            <Subscriptions />
+            <Subscriptions setSum={setSum} />
         </div>
     )
 }
