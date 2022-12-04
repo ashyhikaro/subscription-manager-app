@@ -1,43 +1,4 @@
 @media (max-width: 800px) {
-    .side-panel-container {
-        display: flex;
-        flex-direction: row;
-        gap: 20px;
-        width: 100%;
-        margin-bottom: 20px;
-
-        .user-money-counter {
-            display: flex;
-            height: auto;
-            width: 66%;
-            gap: 0;
-        }
-
-        .user-money-counter .profit-container .profit-count-container {
-            margin: 0;
-            width: 100%;
-            max-width: none;
-        }
-        
-        .user-money-counter .profit-container {
-            padding: 0;
-            margin: 0;
-            border: none;
-        }
-
-        .percent-container {
-            display: none;
-        }
-
-        .user-money-counter .profit-container .profit-count-container .profit-count-btn {
-            right: calc(10% + 3vw);
-        }
-
-        .user-container .user-nickname {
-            width: auto;
-        }
-    }
-
     .main-panel-container {
         width: 100%;
     }
@@ -60,21 +21,6 @@
 }
 
 @media (max-width: 500px) {
-    .side-panel-container {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        width: 100%;
-
-        .user-money-counter {
-            width: 100%;
-
-            .profit-container .profit-count-container .profit-count-btn {
-                right: 20%;
-            }
-        }
-    }
-
     .form-title {
         width: 33%;
         text-align: center;

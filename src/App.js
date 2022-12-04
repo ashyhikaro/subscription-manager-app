@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import './styles/media-req.scss'
 import './styles/app.scss'
 import { MainPanel } from './components/subscriptionsContainerComponents/MainPanel';
 import { SidePanel } from './components/sidepanelComponents/SidePanel';
