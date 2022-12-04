@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-// import { userFormToggleVisability } from '../functions/userFormVisabillity'
-import '../styles/user-handler.scss'
+import '../../styles/sidepanelStyles/user-handler.scss'
 
 export function UserHandler() {
     const [nickname, setNickname] = useState(localStorage.getItem('nickname') ? localStorage.getItem('nickname') : 'User nickname')
@@ -20,8 +19,6 @@ export function UserHandler() {
         nicknameRef.current.value = ''
 
         localStorage.setItem('avatar',  preview.style.backgroundImage)
-
-        console.log('submit')
     }
 
     const changeAvatar = (e) => {
@@ -62,7 +59,6 @@ export function UserHandler() {
 
     useEffect(() => {
         preview = document.querySelector('.user-avatar');
-
         return localStorage.getItem('avatar') ? changeAvatar() : undefined
     })
 

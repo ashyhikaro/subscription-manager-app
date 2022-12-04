@@ -1,4 +1,4 @@
-import '../styles/side-panel.scss'
+import '../../styles/sidepanelStyles/side-panel.scss'
 import { MoneyCounter } from "./MoneyCounter";
 import { UserHandler } from "./UserHandler";
 

@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef, useCallback } from 'react'
-import { addNewSubContainerToggleVisability } from '../functions/addContainerVisabillity'
+import { addNewSubContainerToggleVisability } from '../../functions/addContainerVisabillity'
 
 let activeSubId = null, subsArr
 

@@ -1,4 +1,4 @@
-import { addNewSubContainerToggleVisability } from '../functions/addContainerVisabillity'
+import { addNewSubContainerToggleVisability } from '../../functions/addContainerVisabillity'
 
 export function Header() {
     return (

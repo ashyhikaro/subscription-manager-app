@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import '../styles/money-percent.scss'
+import '../../styles/sidepanelStyles/money-percent.scss'
 
 export function MoneyPercent({sumOfSubs, income}) {
     const [percentOfIncome, setPercentOfIncome] = useState(localStorage.getItem('percentOfIncome') ? localStorage.getItem('percentOfIncome') : 0)

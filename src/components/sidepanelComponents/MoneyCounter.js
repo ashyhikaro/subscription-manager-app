@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import '../styles/money-counter.scss'
+import '../../styles/sidepanelStyles/money-counter.scss'
 import { MoneyPercent } from './MoneyPercent'
 
 export function MoneyCounter({sum}) {

@@ -1,8 +1,8 @@
+import '../../styles/subcriptionsStyles/subscriptions.scss'
+import '../../styles/subcriptionsStyles/header.scss'
+import '../../styles/subcriptionsStyles/main-panel.scss'
 import { Header } from "./Header";
 import { Subscriptions } from "./Subsciptions";
-import '../styles/subscriptions.scss'
-import '../styles/header.scss'
-import '../styles/main-panel.scss'
 
 export function MainPanel()  {
     return (
