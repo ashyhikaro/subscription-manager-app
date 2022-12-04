@@ -3,7 +3,7 @@ import { SubscriptionCreateForm } from './forms/SubcriptionCreateForm.js'
 
 let activeSubId = null, subsArr
 
-export function Subscriptions({setSum}) {
+export function Subscriptions({setSum, sum}) {
     const [subs, setSubs] = useState(() => localStorage.getItem('subs') ? JSON.parse(localStorage.getItem('subs')) : [])
     let subsList
 
@@ -14,8 +14,7 @@ export function Subscriptions({setSum}) {
         let notActiveSubs = []
         
         subsList.forEach(item => {
-            let targetId = item.id
-            let targetObj = subsArr[targetId]
+            let targetObj = subsArr[item.id]
             targetObj.active = false
             notActiveSubs.push(targetObj)
         })
@@ -65,9 +64,11 @@ export function Subscriptions({setSum}) {
     useEffect(() => {
         localStorage.setItem('subs', JSON.stringify(subs))
 
-        let sum = subs.reduce((sum, sub) => sum + sub.price, 0)
-        setSum(sum)
-        localStorage.setItem('sumOfSubs', JSON.stringify(sum))
+        let sumOfSubs = subs.reduce((sum, sub) => parseFloat(sum) + parseFloat(sub.price), 0).toFixed(2)
+        if (sum !== sumOfSubs) {
+            setSum(sumOfSubs)
+            localStorage.setItem('sumOfSubs', sumOfSubs)
+        }
 
         subsArr = subs
 
@@ -80,7 +81,6 @@ export function Subscriptions({setSum}) {
         })
 
         document.addEventListener('click', e => queryAllSubs(e))
-
         
     }, [subs])
 
@@ -93,7 +93,11 @@ export function Subscriptions({setSum}) {
 
             <div className='subscribtions-container'>
                 {subs.length > 0 ? subs.map((sub, index) => 
-                    <div className={sub.active ? "subscribtion-container chose-sub" : "subscribtion-container"} key={index} id={index} onClick={changeActive}>
+                    <div 
+                        className={sub.active ? "subscribtion-container chose-sub" : "subscribtion-container"} 
+                        key={index} 
+                        id={index}
+                    >
                         <div className='sub-title-container'>
                             <span className="sub-logo sub-text" style={{color: sub.color}}>{sub.name[0].toUpperCase()}</span>
                             <p className="sub-title sub-text">{sub.name}</p>
@@ -108,7 +112,7 @@ export function Subscriptions({setSum}) {
                         </div>
 
                         {sub.active && <div className='sub-btns-container'>
-                                <button className="sub-delete-btn sub-text">&#x1F5D1;</button>
+                            <button className="sub-delete-btn sub-text">&#x1F5D1;</button>
                         </div>}
                     </div>) 
                 : null}
