@@ -1,28 +1,32 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../../styles/sidepanelStyles/money-counter.scss'
 import { MoneyPercent } from './MoneyPercent'
 
-export function MoneyCounter({sum}) {
-    const [income, setIncome] = useState(localStorage.getItem('income') ? localStorage.getItem('income') : 0)
+interface IMoneyCounter {
+    sum: number;
+}
+
+export const MoneyCounter: React.FC<IMoneyCounter> = ({sum}) => {
+    const [income, setIncome] = useState<number>(localStorage.getItem('income') ? Number(localStorage.getItem('income')) : 0)
 
     const toggleChangeIncome = () => {
-        const input = document.querySelector('#count')
-        input.classList.toggle('count-invisiblle')
-        input.value = ''
+        const input: HTMLInputElement | null = document.querySelector('#count')
+        input?.classList.toggle('count-invisiblle')
+        if(input) input.value = ''
     }
 
-    const changeIncome = (e) => {
-        let value = e.target.value
+    const changeIncome = (e: React.ChangeEvent<HTMLInputElement>) => {
+        let value: number | string = e.target.value
         
-        if (value < 0 || value === '') {
+        if (typeof value === 'number' && value < 0 || typeof value === 'string' && value === '') {
             setIncome(0)
             e.target.value = ''
         } else {
-            setIncome(value)
+            setIncome(+value)
         }
     }
 
-    useEffect(() => {localStorage.setItem('income', income)}, [income])
+    useEffect(() => localStorage.setItem('income', String(income)), [income])
 
     return  (
         <div className='user-money-counter'>

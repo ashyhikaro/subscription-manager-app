@@ -1,4 +1,6 @@
-export function Header() {
+import React from "react"
+
+export const Header: React.FC = () => {
     const addNewSubContainerToggleVisability = () => document.querySelector('.create-form-container')?.classList.toggle('invisible')
 
     return (

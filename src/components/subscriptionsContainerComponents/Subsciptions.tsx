@@ -1,20 +1,36 @@
-import { useEffect, useState, useCallback } from 'react'
-import { SubscriptionCreateForm } from './forms/SubcriptionCreateForm.js'
+import React, { useEffect, useState, useCallback } from 'react'
+import { SubscriptionCreateForm } from './forms/SubcriptionCreateForm'
+import { Subscription } from '../types/Subscription';
 
-let activeSubId = null, subsArr
+interface ISubscriptions {
+    setSum: React.Dispatch<React.SetStateAction<number>>;
+    sum: number;
+}
 
-export function Subscriptions({setSum, sum}) {
-    const [subs, setSubs] = useState(() => localStorage.getItem('subs') ? JSON.parse(localStorage.getItem('subs')) : [])
-    let subsList
+let activeSubId: null | number = null
+let subsArr: Subscription[] = []
 
-    const queryAllSubs = (e) => {
+export const Subscriptions: React.FC<ISubscriptions> = ({setSum, sum}) => {
+    const [subs, setSubs] = useState<Array<Subscription>>(
+        () => {
+          const subsFromLocalStorage: string | null = localStorage.getItem('subs');
+          if (subsFromLocalStorage !== null) {
+            return JSON.parse(subsFromLocalStorage);
+          }
+          return [];
+        }
+    );
+
+    let subsList: NodeListOf<Element>
+
+    const queryAllSubs = (e: any |  Event | MouseEvent | React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         if (e) {e.stopImmediatePropagation()}
 
         subsList = document.querySelectorAll('.subscribtion-container')
-        let notActiveSubs = []
+        let notActiveSubs: Array<Subscription> = []
         
         subsList.forEach(item => {
-            let targetObj = subsArr[item.id]
+            let targetObj: Subscription = subsArr[+item.id]
             targetObj.active = false
             notActiveSubs.push(targetObj)
         })
@@ -30,33 +46,43 @@ export function Subscriptions({setSum, sum}) {
         setSubs(allSubsNotActive)
     }
 
-    const deleteNotation = (e) => {
+    const deleteNotation = (e: any |  Event | React.MouseEvent<HTMLButtonElement>) => {
         e.stopImmediatePropagation()
-        let targetId = parseInt(e.target.closest('.subscribtion-container').id)
-        setSubs(prev => [...prev.slice(0, targetId), ...prev.slice(targetId + 1)])
-        activeSubId = null
+        
+        const target = e.target as HTMLElement
+        const closestContainer: Element | null = target.closest('.subscribtion-container')
+        if (closestContainer) {
+            const id: number = +closestContainer.id
+            setSubs(prev => [...prev.slice(0, id), ...prev.slice(id + 1)])
+            activeSubId = null
+        }
     }
 
-    const changeActive = useCallback((e) => {
+    const changeActive = useCallback((e: any | Event | React.MouseEvent<HTMLDivElement>) => {
         e.stopImmediatePropagation()
 
-        let targetId = parseInt(e.target.closest('.subscribtion-container').id)
-        let targetObj = subsArr[targetId]
+        const target = e.target as HTMLElement
+        const closestContainer: Element | null = target.closest('.subscribtion-container')
 
-        if (targetId === activeSubId) {
-            if (targetObj.active) {
-                targetObj.active = false
-                activeSubId = null
+        if (closestContainer) {
+            const targetId: number = +closestContainer.id
+            const targetObj: Subscription = subsArr[targetId]
+
+            if (targetId === activeSubId) {
+                if (targetObj.active) {
+                    targetObj.active = false
+                    activeSubId = null
+                } else {
+                    targetObj.active = true
+                    activeSubId = targetId
+                }
+                setSubs(prev => [...prev.slice(0, targetId), JSON.parse(JSON.stringify(targetObj)), ...prev.slice(targetId + 1)])
             } else {
-                targetObj.active = true
                 activeSubId = targetId
+                queryAllSubs(e)
+                changeActive(e)
             }
-            setSubs(prev => [...prev.slice(0, targetId), JSON.parse(JSON.stringify(targetObj)), ...prev.slice(targetId + 1)])
-        } else {
-            activeSubId = targetId
-            queryAllSubs(e)
-            changeActive(e)
-        }    
+        }   
     }, [])
 
     useEffect(() => doAllNotActiveAfterPageLoading, [])
@@ -64,9 +90,9 @@ export function Subscriptions({setSum, sum}) {
     useEffect(() => {
         localStorage.setItem('subs', JSON.stringify(subs))
 
-        let sumOfSubs = subs.reduce((sum, sub) => parseFloat(sum) + parseFloat(sub.price), 0).toFixed(2)
-        if (sum !== sumOfSubs) {
-            setSum(sumOfSubs)
+        let sumOfSubs = subs.reduce((sum, sub) => parseFloat(String(sum)) + parseFloat(String(sub.price)), 0).toFixed(2)
+        if (sum !== +sumOfSubs) {
+            setSum(+sumOfSubs)
             localStorage.setItem('sumOfSubs', sumOfSubs)
         }
 
@@ -92,11 +118,11 @@ export function Subscriptions({setSum, sum}) {
             />
 
             <div className='subscribtions-container'>
-                {subs.length > 0 ? subs.map((sub, index) => 
+                {subs.length > 0 ? subs.map((sub, index: number) => 
                     <div 
                         className={sub.active ? "subscribtion-container chose-sub" : "subscribtion-container"} 
                         key={index} 
-                        id={index}
+                        id={String(index)}
                     >
                         <div className='sub-title-container'>
                             <span className="sub-logo sub-text" style={{color: sub.color}}>{sub.name[0].toUpperCase()}</span>

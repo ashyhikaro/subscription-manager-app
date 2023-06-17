@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import '../../styles/sidepanelStyles/user-handler.scss'
-import { UserSettingForm } from './forms/UserSettingForm.js'
+import { UserSettingForm } from './forms/UserSettingForm'
 
-export function UserHandler() {
-    const [nickname, setNickname] = useState(localStorage.getItem('nickname') ? localStorage.getItem('nickname') : 'User nickname')
+export const UserHandler: React.FC = () => {
+    const [nickname, setNickname] = useState<string | null>(localStorage.getItem('nickname') ? localStorage.getItem('nickname') : 'User nickname')
 
     const userFormToggleVisability = () => document.querySelector('.user-form')?.classList.toggle('form-non-active')
 
