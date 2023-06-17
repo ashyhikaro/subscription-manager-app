@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/react-sub-manager/static/css/main.919aa0ab.css",
-    "main.js": "/react-sub-manager/static/js/main.a390e8e1.js",
+    "main.js": "/react-sub-manager/static/js/main.cc72e3c8.js",
     "index.html": "/react-sub-manager/index.html",
     "main.919aa0ab.css.map": "/react-sub-manager/static/css/main.919aa0ab.css.map",
-    "main.a390e8e1.js.map": "/react-sub-manager/static/js/main.a390e8e1.js.map"
+    "main.cc72e3c8.js.map": "/react-sub-manager/static/js/main.cc72e3c8.js.map"
   },
   "entrypoints": [
     "static/css/main.919aa0ab.css",
-    "static/js/main.a390e8e1.js"
+    "static/js/main.cc72e3c8.js"
   ]
 }
